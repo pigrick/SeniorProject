@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/web/browse.jsp</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/servlet/BlogEntryListServlet.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/DAO/DBConnection.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/DAO/BlogEntryDAO.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/web/MainPage.jsp</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/web/navigation.jsp</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/servlet/browseServlet.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/domain/BlogEntry.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/DAO/UserDAO.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/web/editBlogEntry.jsp</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/web/createblogentry.jsp</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/domain/CommentEntry.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/servlet/deleteCommentServlet.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/servlet/viewBlogEntryServlet.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/web/blogentrylist.jsp</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/domain/Comment.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/DAO/CommentDAO.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/servlet/registerServlet.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/servlet/editBlogEntryServlet.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/servlet/CreateBlogEntryServlet.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/web/register.jsp</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/servlet/loginServlet.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/web/login.jsp</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/servlet/logoutServlet.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/servlet/editProfileServlet.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/domain/User.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/web/main.css</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/src/java/servlet/deleteBlogEntryServlet.java</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/web/blogEntry.jsp</file>
+            <file>file:/C:/Users/yeerick/Documents/NetBeansProjects/SeniorProject/web/index.html</file>
+        </group>
+    </open-files>
+</project-private>
