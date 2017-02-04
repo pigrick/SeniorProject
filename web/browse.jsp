@@ -11,19 +11,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="main.css">
+        <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="js/navigation.js" type="text/javascript"></script>
         <title>Browse</title>
     </head>
     <body>
         <jsp:include page="navigation.jsp"></jsp:include>
+        <h1>Browsing</h1>
         <c:forEach var="entry" items="${entries}">
             <fieldset>
-                <legend>${entry.username}</legend>
-                <c:out value="${entry.title}" />
-                <p>${entry.created}</p>
-                <form action="/SeniorProject/BlogEntryList/view" method="GET">
-                    <input type="hidden" name="id" value="${entry.id}" />
-                    <input type="submit" value="View"/>
-                </form>                
+                <legend><a class="noline" href="user?name=${entry.username}"><c:out value="${entry.username}" /></a></legend>
+                <a class="marleft" href="BlogEntryList/view?id=${entry.id}"><c:out value="${entry.title}" /></a>
+                <p>Posted by: ${entry.created}</p>
+                <p>Likes: ${entry.likes}</p>            
             </fieldset>
         </c:forEach>
         <c:forEach var="page" items="${pages}">

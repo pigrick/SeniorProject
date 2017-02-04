@@ -11,16 +11,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="main.css">
+        <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="js/navigation.js" type="text/javascript"></script>
         <title>Pigrick's Amazing Blogger UTOPIA</title>
     </head>
     <body>
         <jsp:include page="navigation.jsp"></jsp:include>
         <c:if test="${user != null}">
             <h1> Welcome, ${user.username} </h1>
+            <img src='${user.picurl}' alt="${user.username}'s picture" height="200" width="200"/>
         </c:if>
         <c:if test="${user == null}">
             <h1>WELCOME to Pigrick's Amazing Blogger UTOPIA!</h1>
-            <p>PLease login or register to make use this awesome web application!</p>
+            <p>Please login or register to make use this awesome web application!</p>
         </c:if>
     </body>
 </html>

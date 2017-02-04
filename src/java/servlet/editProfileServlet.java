@@ -45,6 +45,8 @@ public class editProfileServlet extends HttpServlet {
             User current = (User) request.getSession().getAttribute("user");
             request.setAttribute("username", current.getUsername());
             request.setAttribute("email", current.getEmail());
+            request.setAttribute("picurl", current.getPicurl());
+            request.setAttribute("description", current.getDescription());
             RequestDispatcher dispatch = request.getRequestDispatcher("editprofile.jsp");
             dispatch.forward(request, response);
         }
@@ -56,6 +58,8 @@ public class editProfileServlet extends HttpServlet {
         char[] oldpassword = request.getParameter("oldpassword").toCharArray();
         char[] newpassword = request.getParameter("newpassword").toCharArray();
         String email = request.getParameter("email");
+        String description = request.getParameter("description");
+        String picurl = request.getParameter("picurl");
         User current = (User) request.getSession().getAttribute("user");
         
         UserDAO UDAO = new UserDAO();
@@ -70,7 +74,7 @@ public class editProfileServlet extends HttpServlet {
                 
                 if(us == null){
                     token = pa.hash(newpassword);
-                    UDAO.updateUser(con, username, email, token, current.getId());
+                    UDAO.updateUser(con, username, email, picurl, description, token, current.getId());
                     request.getSession().setAttribute("user", UDAO.findByUsername(con, username));
                     RequestDispatcher dispatch = request.getRequestDispatcher("MainPage.jsp");
                     dispatch.forward(request, response);      
@@ -80,12 +84,16 @@ public class editProfileServlet extends HttpServlet {
                         newpassword[i] = 0;
                     }
                 } else if (us.getUsername().equals(username)) {
+                    request.setAttribute("picurl", picurl);
+                    request.setAttribute("description", description);
                     request.setAttribute("email", email);
                     request.setAttribute("username", current.getUsername());
                     request.setAttribute("validability", "Username already in used");
                     RequestDispatcher dispatch = request.getRequestDispatcher("editprofile.jsp");
                     dispatch.forward(request, response);
                 } else if (us.getEmail().equals(email)) {
+                    request.setAttribute("picurl", picurl);
+                    request.setAttribute("description", description);
                     request.setAttribute("username", username);
                     request.setAttribute("email", current.getEmail());
                     request.setAttribute("validability", "Email already in used");
@@ -94,6 +102,8 @@ public class editProfileServlet extends HttpServlet {
                 }
 
             } else {
+                request.setAttribute("picurl", picurl);
+                request.setAttribute("description", description);
                 request.setAttribute("email", email);
                 request.setAttribute("username", username);
                 request.setAttribute("validability", "Old password is incorrect!");

@@ -44,10 +44,10 @@ public class likeblogentryServlet extends HttpServlet {
         try (Connection con = DBConnection.getCon()) {
             if (likey.equals("like")) {
                 BEDAO.addlike(con, beid, us.getId());
-            } else {
-               BEDAO.deletelike(con, beid, us.getId());
+            } else if (likey.equals("unlike")){
+                BEDAO.deletelike(con, beid, us.getId());
             }
-            response.sendRedirect("view?id="+beid);
+
         } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(BlogEntryListServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

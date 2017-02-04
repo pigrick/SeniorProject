@@ -48,6 +48,42 @@
         <servlet-name>likeblogentryServlet</servlet-name>
         <servlet-class>servlet.likeblogentryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>userServlet</servlet-name>
+        <servlet-class>servlet.userServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>searchUserServlet</servlet-name>
+        <servlet-class>servlet.searchUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>friendServlet</servlet-name>
+        <servlet-class>servlet.friendServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>friendlistServlet</servlet-name>
+        <servlet-class>servlet.friendlistServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>notificationServlet</servlet-name>
+        <servlet-class>servlet.notificationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>browsefriendServlet</servlet-name>
+        <servlet-class>servlet.browsefriendServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>messageServlet</servlet-name>
+        <servlet-class>servlet.messageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getmessageServlet</servlet-name>
+        <servlet-class>servlet.getmessageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>messagenotificationServlet</servlet-name>
+        <servlet-class>servlet.messagenotificationServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -95,6 +131,42 @@
     <servlet-mapping>
         <servlet-name>likeblogentryServlet</servlet-name>
         <url-pattern>/BlogEntryList/likeblogentry</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>userServlet</servlet-name>
+        <url-pattern>/user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchUserServlet</servlet-name>
+        <url-pattern>/searchUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>friendServlet</servlet-name>
+        <url-pattern>/friend</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>friendlistServlet</servlet-name>
+        <url-pattern>/friendlist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>notificationServlet</servlet-name>
+        <url-pattern>/notification</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>browsefriendServlet</servlet-name>
+        <url-pattern>/browsefriend</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>messageServlet</servlet-name>
+        <url-pattern>/message</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getmessageServlet</servlet-name>
+        <url-pattern>/getmessage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>messagenotificationServlet</servlet-name>
+        <url-pattern>/messagenotification</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

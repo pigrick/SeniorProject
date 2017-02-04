@@ -37,7 +37,6 @@ public class likecommentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int commentid = Integer.parseInt(request.getParameter("commentid"));
-        int beid = Integer.parseInt(request.getParameter("beid"));
         String likey = request.getParameter("likey");
         User us = (User) request.getSession().getAttribute("user");
         CommentDAO UDAO = new CommentDAO();
@@ -47,7 +46,6 @@ public class likecommentServlet extends HttpServlet {
             } else {
                 UDAO.deletelike(con, commentid, us.getId());
             }
-            response.sendRedirect("view?id="+beid);
         } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(BlogEntryListServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

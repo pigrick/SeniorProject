@@ -53,6 +53,9 @@ public class viewBlogEntryServlet extends HttpServlet {
             if (us != null) {               
                 comments = CDAO.findbyBlogEntryId(con, beid, us.getId());
                 be = BEDAO.findbyId(con, beid, us.getId());
+                if(be.getUserid() == us.getId()){
+                    CDAO.read(con, comments);
+                }
             } else {
                 comments = CDAO.findbyBlogEntryId(con, beid);
                 be = BEDAO.findbyId(con, beid);

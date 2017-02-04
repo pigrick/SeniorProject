@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class MainPage_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class message_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -49,13 +49,23 @@ public final class MainPage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"main.css\">\n");
-      out.write("        <title>Homepage</title>\n");
+      out.write("         <link rel=\"stylesheet\" type=\"text/css\" href=\"main.css\">\n");
+      out.write("        <script src=\"js/jquery-3.1.1.min.js\" type=\"text/javascript\"></script>\n");
+      out.write("        <script src=\"js/navigation.js\" type=\"text/javascript\"></script>\n");
+      out.write("        <script src=\"js/message.js\" type=\"text/javascript\"></script>\n");
+      out.write("        <title>Message</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        ");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "navigation.jsp", out, false);
       out.write("\n");
+      out.write("        <h1>Message Box for ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${target.username}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h1>\n");
+      out.write("        <textarea name=\"message\" cols=\"100\" rows=\"30\" readonly>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${message}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</textarea><br/>\n");
+      out.write("        <textarea name=\"sendmessage\" cols=\"100\" rows=\"5\"></textarea>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

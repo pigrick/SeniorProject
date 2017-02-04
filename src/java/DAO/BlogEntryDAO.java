@@ -40,11 +40,11 @@ public class BlogEntryDAO {
             be.setUserid(rs.getInt("userid"));
             be.setUsername(rs.getString("username"));
             be.setLikes(noLike(cn, be.getId()));
-            blogentries.add(be);           
+            blogentries.add(be);
         }
         return blogentries;
     }
-    
+
     public ArrayList<BlogEntry> findAll(Connection cn, int viewerid) throws SQLException {
         String query = "SELECT blogentry.*, user.username FROM blogentry RIGHT JOIN user ON blogentry.userid=user.id ORDER BY created DESC";
         ResultSet rs = null;
@@ -63,7 +63,33 @@ public class BlogEntryDAO {
             be.setUsername(rs.getString("username"));
             be.setLikes(noLike(cn, be.getId()));
             be.setViewerlikes(checklike(cn, be.getId(), viewerid));
-            blogentries.add(be);           
+            blogentries.add(be);
+        }
+        return blogentries;
+    }
+
+    public ArrayList<BlogEntry> findbyFriend(Connection cn, int userid) throws SQLException {
+        UserDAO UDAO = new UserDAO();
+        ArrayList<User> friends = UDAO.findfriends(cn, userid);
+        ArrayList<BlogEntry> blogentries = new ArrayList<>();
+        for (User friend : friends) {
+            String query = "SELECT blogentry.*, user.username FROM blogentry RIGHT JOIN user ON blogentry.userid=user.id WHERE userid = ? ORDER BY created DESC";
+            ResultSet rs = null;
+
+            PreparedStatement st = cn.prepareStatement(query);
+            st.setInt(1, friend.getId());
+            rs = st.executeQuery();
+
+            while (rs.next()) {
+                BlogEntry be = new BlogEntry();
+                be.setId(rs.getInt("id"));
+                be.setTitle(rs.getString("title"));
+                be.setDetail(rs.getString("detail"));
+                be.setCreated(rs.getTimestamp("created"));
+                be.setUserid(rs.getInt("userid"));
+                be.setUsername(rs.getString("username"));
+                blogentries.add(be);
+            }
         }
         return blogentries;
     }
@@ -110,7 +136,7 @@ public class BlogEntryDAO {
         }
         return null;
     }
-    
+
     public BlogEntry findbyId(Connection cn, int id, int viewerid) throws SQLException {
         String query = "SELECT blogentry.*, user.username FROM blogentry RIGHT JOIN user ON blogentry.userid=user.id WHERE blogentry.id = ? ORDER BY created DESC";
         ResultSet rs = null;
@@ -151,11 +177,12 @@ public class BlogEntryDAO {
             be.setCreated(rs.getTimestamp("created"));
             be.setUserid(rs.getInt("userid"));
             be.setUsername(rs.getString("username"));
+            be.setLikes(noLike(cn, be.getId()));
             blogentries.add(be);
         }
         return blogentries;
     }
-    
+
     public ArrayList<BlogEntry> findByUserid(Connection cn, int userid, int viewerid) throws SQLException {
         String query = "SELECT blogentry.*, user.username FROM blogentry RIGHT JOIN user ON blogentry.userid=user.id WHERE userid = ? ORDER BY created DESC";
         ResultSet rs = null;
@@ -215,7 +242,39 @@ public class BlogEntryDAO {
         }
         return 0;
     }
-    
+    public int getFriendsBlogEntryNumber(Connection cn, int userid) throws SQLException {
+        ArrayList<BlogEntry> bes = findbyFriend(cn, userid);
+        return bes.size();
+    }
+
+    public ArrayList<BlogEntry> findFriendsByPage(Connection cn, int userid, int pagestart, int pages) throws SQLException {
+        UserDAO UDAO = new UserDAO();
+        ArrayList<User> friends = UDAO.findfriends(cn, userid);
+        ArrayList<BlogEntry> blogentries = new ArrayList<>();
+        for (User friend : friends) {
+            String query = "SELECT blogentry.*, user.username FROM blogentry RIGHT JOIN user ON blogentry.userid=user.id WHERE userid = ? ORDER BY created DESC LIMIT ?, ?";
+            ResultSet rs = null;
+
+            PreparedStatement ps = cn.prepareStatement(query);
+            ps.setInt(1, friend.getId());
+            ps.setInt(2, pagestart);
+            ps.setInt(3, pages);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                BlogEntry be = new BlogEntry();
+                be.setId(rs.getInt("id"));
+                be.setTitle(rs.getString("title"));
+                be.setDetail(rs.getString("detail"));
+                be.setCreated(rs.getTimestamp("created"));
+                be.setUserid(rs.getInt("userid"));
+                be.setUsername(rs.getString("username"));
+                blogentries.add(be);
+            }
+        }
+        return blogentries;
+    }
+
     public ArrayList<BlogEntry> findAllByPage(Connection cn, int pagestart, int pages) throws SQLException {
         String query = "SELECT blogentry.*, user.username FROM blogentry LEFT JOIN user ON blogentry.userid=user.id ORDER BY created DESC LIMIT ?,?";
         ResultSet rs = null;
@@ -234,50 +293,51 @@ public class BlogEntryDAO {
             be.setCreated(rs.getTimestamp("created"));
             be.setUserid(rs.getInt("userid"));
             be.setUsername(rs.getString("username"));
+            be.setLikes(noLike(cn, be.getId()));
             blogentries.add(be);
         }
         return blogentries;
     }
-    
-    public int noLike(Connection cn, int beid) throws SQLException{
+
+    public int noLike(Connection cn, int beid) throws SQLException {
         String query = "SELECT COUNT(*) AS count FROM belike Where beid = ?";
         ResultSet rs = null;
         PreparedStatement ps = cn.prepareStatement(query);
         ps.setInt(1, beid);
         rs = ps.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             return rs.getInt("count");
         }
-        return 0;           
+        return 0;
     }
-    
-    public Boolean checklike(Connection cn, int beid, int viewerid) throws SQLException{
+
+    public Boolean checklike(Connection cn, int beid, int viewerid) throws SQLException {
         String query = "SELECT * FROM belike WHERE beid = ? AND userid = ?";
         ResultSet rs = null;
         PreparedStatement ps = cn.prepareStatement(query);
         ps.setInt(1, beid);
         ps.setInt(2, viewerid);
         rs = ps.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             return true;
         }
         return false;
     }
-    
-    public void addlike(Connection cn, int beid, int viewerid) throws SQLException{
+
+    public void addlike(Connection cn, int beid, int viewerid) throws SQLException {
         String query = "INSERT INTO belike (userid, beid) VALUES (?,?)";
         PreparedStatement ps = cn.prepareStatement(query);
         ps.setInt(1, viewerid);
         ps.setInt(2, beid);
         ps.execute();
     }
-    
-    public void deletelike(Connection cn, int beid, int viewerid) throws SQLException{
+
+    public void deletelike(Connection cn, int beid, int viewerid) throws SQLException {
         String query = "DELETE FROM belike WHERE (userid = ? AND beid = ?)";
         PreparedStatement ps = cn.prepareStatement(query);
         ps.setInt(1, viewerid);
         ps.setInt(2, beid);
         ps.execute();
     }
-    
+
 }

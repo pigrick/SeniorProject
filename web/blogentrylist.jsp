@@ -11,6 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="main.css">
+        <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="js/navigation.js" type="text/javascript"></script>
         <title>Blog Entry List</title>
     </head>
     <body>
@@ -18,15 +20,14 @@
         <p>${apple}</p>
         <c:forEach var="entry" items="${entries}">
             <fieldset>
-                <c:out value="${entry.title}" />
-                <p>${entry.created}</p>
-                <form action="BlogEntryList/view" method="GET">
-                    <input type="hidden" name="id" value="${entry.id}" />
-                    <input type="submit" value="View"/>
-                </form>                
+                <a class="marleft" href="BlogEntryList/view?id=${entry.id}"><c:out value="${entry.title}" /></a>
+                <p>Posted by: ${entry.created}</p>
+                <p>Likes: ${entry.likes}</p>               
                 
             </fieldset>
+                
         </c:forEach>
+        
         <form action="CreateBlogEntry" method="GET">
             <input type="submit" value="Create New"/>
         </form>

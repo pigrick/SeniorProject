@@ -20,6 +20,7 @@ public class Comment {
     private String username;
     private int likes;
     private Boolean viewerlikes;
+    private Boolean read;
     
     public Comment(){
         
@@ -96,6 +97,14 @@ public class Comment {
 
     public void setViewerlikes(Boolean viewerlikes) {
         this.viewerlikes = viewerlikes;
+    }
+
+    public Boolean getRead() {
+        return read;
+    }
+
+    public void setRead(Boolean read) {
+        this.read = read;
     }
     
     

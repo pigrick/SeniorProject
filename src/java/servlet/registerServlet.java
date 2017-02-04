@@ -50,6 +50,8 @@ public class registerServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
+        String picurl = request.getParameter("picurl");
+        String description = request.getParameter("description");
         char[] password = request.getParameter("password").toCharArray();
 
         PasswordAuthentication pa = new PasswordAuthentication();
@@ -67,16 +69,20 @@ public class registerServlet extends HttpServlet {
         try (Connection con = DBConnection.getCon()) {
             if (UDAO.findByUsername(con, username) != null) {
                 request.setAttribute("email", email);
+                request.setAttribute("picurl", picurl);
+                request.setAttribute("description", description);
                 request.setAttribute("validability", "Username already in used.");
                 RequestDispatcher dispatch = request.getRequestDispatcher("register.jsp");
                 dispatch.forward(request, response);
             } else if (UDAO.findByEmail(con, email) != null) {
                 request.setAttribute("username", username);
+                request.setAttribute("picurl", picurl);
+                request.setAttribute("description", description);
                 request.setAttribute("validability", "Email already in used.");
                 RequestDispatcher dispatch = request.getRequestDispatcher("register.jsp");
                 dispatch.forward(request, response);
             } else {
-                UDAO.addUser(con, username, email, token);
+                UDAO.addUser(con, username, email, picurl, description, token);
                 response.sendRedirect("login");
             }
         } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {

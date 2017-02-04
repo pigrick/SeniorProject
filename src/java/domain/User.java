@@ -6,7 +6,7 @@
 package domain;
 
 import java.util.ArrayList;
-
+import domain.FriendRequest;
 /**
  *
  * @author yeerick
@@ -17,6 +17,9 @@ public class User {
     private String email;
     private String password;
     private ArrayList<BlogEntry> blogEntries;
+    private String picurl;
+    private FriendRequest viewerfriend;
+    private String description;
     
     public User(){}
 
@@ -66,6 +69,33 @@ public class User {
     public void setBlogEntries(ArrayList<BlogEntry> blogEntries) {
         this.blogEntries = blogEntries;
     }
+
+    public String getPicurl() {
+        return picurl;
+    }
+
+    public void setPicurl(String picurl) {
+        this.picurl = picurl;
+    }
+
+    public FriendRequest getViewerfriend() {
+        return viewerfriend;
+    }
+
+    public void setViewerfriend(FriendRequest viewerfriend) {
+        this.viewerfriend = viewerfriend;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    
+    
     
     
 }

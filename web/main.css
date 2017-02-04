@@ -10,21 +10,23 @@ and open the template in the editor.
 body{
     margin-left: 10pt;
     margin-top: 5px;
+    background-color: lightcyan;
 }
 .navigation ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: lightgrey;
+    background-color: grey;
 }
 
-.navigation li a, .dropbtn{
+.navigation li > a, .dropbtn, .navigation li form{
     display: inline-block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .navigation li.left{
@@ -46,7 +48,7 @@ li.dropdown {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: lightgrey;
+    background-color: grey;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
@@ -59,9 +61,120 @@ li.dropdown {
     text-align: left;
 }
 
-.dropdown-content a:hover {background-color: green}
+.dropdown-content a:hover {
+    background-color: green
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
+.left{
+    float:left;
+}
+
+img {
+   background-image: url('https://thebenclark.files.wordpress.com/2014/03/facebook-default-no-profile-pic.jpg');
+   background-size: 200px 200px;
+}
+
+.inline{
+    display: inline;
+}
+
+.right{
+    float:right;
+}
+
+.clear{
+    clear: left;
+}
+
+.commentbox{
+    border: 2px solid black;
+    background-color: yellowgreen;
+    border-radius: 5px;
+}
+
+.marleft{
+    margin-left: 30px;
+}
+
+legend{
+    font-weight: bold;
+    font-size: 20pt;
+    margin-left: 20px;
+}
+
+.entrybox{
+    border: 2px solid black;
+    background-color: bisque;
+    border-radius: 5px;
+}
+
+#friendbox{
+    border: 2px solid black;
+    background-color: darkkhaki;
+    border-radius: 5px;
+}
+
+#acceptingbox{
+    border: 2px solid black;
+    background-color: darkseagreen;
+    border-radius: 5px;
+}
+
+#requestingbox{
+     border: 2px solid black;
+    background-color: seagreen;
+    border-radius: 5px;
+}
+
+fieldset{
+    margin: 10px 20px 10px 20px;
+}
+
+h1,h2, p, img, button{
+    margin: 10px 20px 10px 20px;
+}
+
+input [type=text]{
+    width: 100%;
+    height: 20px;
+    background-color: lemonchiffon;
+}
+
+.noline{
+    text-decoration: none;
+}
+
+#notificationno, #messageno{
+    color: red;
+}
+
+.thumbnail{
+    height: 20px;
+    width: 20px;
+}
+
+.textright{
+    text-align: right;
+}
+
+.textleft{
+    text-align: left;
+}
+
+.chatbox{
+   border: 1px solid gray;
+   height: 400px;
+   width: 400px;
+   overflow: auto;
+   background-color: white;
+}
+
+.messagename{
+    font-weight: bold;
+    font-size: 120%;
+    color: blue;
+}
