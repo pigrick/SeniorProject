@@ -7,7 +7,7 @@
         <li class="dropdown left"><a href="#" class="dropbtn">Browse</a>
             <div class="dropdown-content">
                 <a href="/SeniorProject/browse?page=0">All</a>
-                <a href="/SeniorProject/browsefriend">Friends</a>
+                <a href="/SeniorProject/browsefriend?page=0">Friends</a>
             </div>
         <li class="left"><a href="/SeniorProject/friendlist">Friend List</a></li>
         <li class="left">

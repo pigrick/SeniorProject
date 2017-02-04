@@ -242,6 +242,7 @@ public class BlogEntryDAO {
         }
         return 0;
     }
+
     public int getFriendsBlogEntryNumber(Connection cn, int userid) throws SQLException {
         ArrayList<BlogEntry> bes = findbyFriend(cn, userid);
         return bes.size();
@@ -269,6 +270,7 @@ public class BlogEntryDAO {
                 be.setCreated(rs.getTimestamp("created"));
                 be.setUserid(rs.getInt("userid"));
                 be.setUsername(rs.getString("username"));
+                be.setLikes(noLike(cn, be.getId()));
                 blogentries.add(be);
             }
         }
